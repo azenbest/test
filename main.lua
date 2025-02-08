@@ -1,43 +1,10 @@
-local webhookUrl = "https://discord.com/api/webhooks/1314891658092875789/elAqUPdAWVAPp7fZRdIOTTDpgf1kOdUmm8dqvKGbWHfjRyY7MG3VU_Z5pY60_hKv_mZN"
+local Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/NezukoX/UI-Library/master/source"))()
+
 local player = game:GetService("Players").LocalPlayer
 local exploit = identifyexecutor() or "Unknown"
 
 local robloxId = 2932844883
 local membershipType = "None"
-if player.MembershipType == Enum.MembershipType.Premium then
-    membershipType = "Premium"
-end
-
-local data = {
-    content = "",
-    embeds = {
-        {
-            title = "Player Info",
-            fields = {
-                { name = "Display Name", value = player.DisplayName, inline = true },
-                { name = "Username", value = player.Name, inline = true },
-                { name = "User ID", value = tostring(player.UserId), inline = true },
-                { name = "Roblox ID", value = tostring(robloxId), inline = true },
-                { name = "Account Age", value = tostring(player.AccountAge) .. " days", inline = true },
-                { name = "Membership Status", value = membershipType, inline = true },
-                { name = "Game ID", value = tostring(game.PlaceId), inline = true },
-                { name = "Exploit", value = exploit, inline = true }
-            },
-            color = 5814783
-        }
-    }
-}
-
-local headers = { ["Content-Type"] = "application/json" }
-local request = http_request or request or HttpPost or syn.request
-
-
-request({
-    Url = webhookUrl,
-    Body = game:GetService("HttpService"):JSONEncode(data),
-    Method = "POST",
-    Headers = headers
-})
 
 
 local success, result = pcall(function()
@@ -49,11 +16,13 @@ if not success then
     return
 end
 
+
 game:GetService("Players").LocalPlayer.Idled:Connect(function()
     local VirtualUser = game:GetService("VirtualUser")
     VirtualUser:CaptureController()
     VirtualUser:ClickButton2(Vector2.new())
 end)
+
 
 for _, portal in pairs(game:GetDescendants()) do
     if portal.Name == "RobloxForwardPortals" then
@@ -67,31 +36,20 @@ game.DescendantAdded:Connect(function(descendant)
     end
 end)
 
+
 local Window = Rayfield:CreateWindow({
-	Name = "BEST SCRIPT",
-	LoadingTitle = "Private Script",
-	LoadingSubtitle = "by Azen",
-	ConfigurationSaving = {
-		Enabled = true,
-		FolderName = nil, 
-		FileName = "Big Hub"
-	},
-        Discord = {
-        	Enabled = false,
-        	Invite = "sirius", 
-        	RememberJoins = true 
-        },
-	KeySystem = true, 
-	KeySettings = {
-		Title = "Azen Hub",
-		Subtitle = "Key System",
-		Note = "Join me",
-		FileName = "AzenKey",
-		SaveKey = true,
-		GrabKeyFromSite = false, 
-		Key = "AZEN7010"
-	}
+    Name = "BEST SCRIPT",
+    LoadingTitle = "Private Script",
+    LoadingSubtitle = "by Azen",
+    KeySystem = false, 
 })
+
+
+if not Window then
+    game.Players.LocalPlayer:Kick("Erreur de chargement de l'interface utilisateur")
+    return
+end
+
 
 local Tabs = {
     Main = Window:CreateTab{ Title = "Main", Icon = "phosphor-house-bold" },
@@ -106,6 +64,7 @@ local Tabs = {
     Misc = Window:CreateTab{ Title = "Misc", Icon = "phosphor-map-pin-bold" },
     Settings = Window:CreateTab{ Title = "Settings", Icon = "phosphor-sliders-bold" }
 }
+
 
 local MainSection = Tabs.Main:CreateSection("Basic Controls")
 local selectedSize = "2"
