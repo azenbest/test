@@ -67,17 +67,31 @@ game.DescendantAdded:Connect(function(descendant)
     end
 end)
 
-local Library = loadstring(game:HttpGetAsync("https://github.com/ActualMasterOogway/Fluent-Renewed/releases/latest/download/Fluent.luau"))()
-local Window = Library:CreateWindow{
-    Title = player.DisplayName .. " Private Script",
-    SubTitle = "By Azen7010",
-    Size = UDim2.fromOffset(830, 525),
-    Resize = true,
-    MinSize = Vector2.new(470, 380),
-    Acrylic = true,
-    Theme = "VSC Dark High Contrast",
-    MinimizeKey = Enum.KeyCode.RightControl
-}
+local Window = Rayfield:CreateWindow({
+	Name = "BEST SCRIPT",
+	LoadingTitle = "Private Script",
+	LoadingSubtitle = "by Azen",
+	ConfigurationSaving = {
+		Enabled = true,
+		FolderName = nil, 
+		FileName = "Big Hub"
+	},
+        Discord = {
+        	Enabled = false,
+        	Invite = "sirius", 
+        	RememberJoins = true 
+        },
+	KeySystem = true, 
+	KeySettings = {
+		Title = "Azen Hub",
+		Subtitle = "Key System",
+		Note = "Join me",
+		FileName = "AzenKey",
+		SaveKey = true,
+		GrabKeyFromSite = false, 
+		Key = "AZEN7010"
+	}
+})
 
 local Tabs = {
     Main = Window:CreateTab{ Title = "Main", Icon = "phosphor-house-bold" },
